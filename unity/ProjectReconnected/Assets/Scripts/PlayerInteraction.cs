@@ -1,4 +1,6 @@
 
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -19,7 +21,7 @@ public class PlayerInteraction : MonoBehaviour
         if (other.TryGetComponent(out IInteractable interactable))
         {
             currentTarget = interactable;
-            interactable.ShowInteractionUI(true);
+            interactable.ShowInteractionUI(true); // UI 출력 요청
         }
     }
 
