@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deactivateSelf: 0
   objectsToActivate: []
-  objectsToDeactivate: []
+  objectsToDestroy: []
   objectsToMove: []
   newPositions: []
   restorationChange: 0
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deactivateSelf: 0
   objectsToActivate: []
-  objectsToDeactivate: []
+  objectsToDestroy: []
   objectsToMove:
   - {fileID: 1420550300}
   newPositions:
@@ -1589,8 +1589,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Restoration : 99%'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c79c51d1a7d21043a9703a8533db0c3, type: 2}
-  m_sharedMaterial: {fileID: -6083507478269333204, guid: 7c79c51d1a7d21043a9703a8533db0c3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7528,7 +7528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deactivateSelf: 0
   objectsToActivate: []
-  objectsToDeactivate: []
+  objectsToDestroy: []
   objectsToMove:
   - {fileID: 1420550300}
   newPositions:
@@ -7875,7 +7875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deactivateSelf: 0
   objectsToActivate: []
-  objectsToDeactivate: []
+  objectsToDestroy: []
   objectsToMove: []
   newPositions: []
   restorationChange: 20
@@ -8654,7 +8654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deactivateSelf: 0
   objectsToActivate: []
-  objectsToDeactivate: []
+  objectsToDestroy: []
   objectsToMove: []
   newPositions: []
   restorationChange: 0
@@ -9385,7 +9385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deactivateSelf: 1
   objectsToActivate: []
-  objectsToDeactivate: []
+  objectsToDestroy: []
   objectsToMove: []
   newPositions: []
   restorationChange: 50
@@ -16058,7 +16058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deactivateSelf: 1
   objectsToActivate: []
-  objectsToDeactivate: []
+  objectsToDestroy: []
   objectsToMove: []
   newPositions: []
   restorationChange: 50
@@ -16277,6 +16277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1139210618}
+  interactionPrompt: {fileID: 0}
 --- !u!1 &1575677803
 GameObject:
   m_ObjectHideFlags: 0
@@ -16476,8 +16477,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Clues : n'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c79c51d1a7d21043a9703a8533db0c3, type: 2}
-  m_sharedMaterial: {fileID: -6083507478269333204, guid: 7c79c51d1a7d21043a9703a8533db0c3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16887,8 +16888,6 @@ GameObject:
   - component: {fileID: 1840342507}
   - component: {fileID: 1840342506}
   - component: {fileID: 1840342512}
-  - component: {fileID: 1840342513}
-  - component: {fileID: 1840342514}
   m_Layer: 0
   m_Name: YellowBox02_pre (3)
   m_TagString: Untagged
@@ -17109,7 +17108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deactivateSelf: 0
   objectsToActivate: []
-  objectsToDeactivate:
+  objectsToDestroy:
   - {fileID: 934767904}
   - {fileID: 240701347}
   objectsToMove: []
@@ -17118,32 +17117,6 @@ MonoBehaviour:
   clueChange: 1
   imageToShow: {fileID: 0}
   interactionPrompt: {fileID: 588475380}
---- !u!114 &1840342513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840342504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a945bc55f3d2c4baa27f4be41cb2d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 934767904}
---- !u!114 &1840342514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840342504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a945bc55f3d2c4baa27f4be41cb2d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 240701347}
 --- !u!1 &1957884873
 GameObject:
   m_ObjectHideFlags: 0

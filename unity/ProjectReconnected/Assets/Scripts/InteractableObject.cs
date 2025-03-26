@@ -7,7 +7,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     [Header("상호작용 설정")]
     public bool deactivateSelf = false;
     public List<GameObject> objectsToActivate;
-    public List<GameObject> objectsToDeactivate;
+    public List<GameObject> objectsToDestroy;
     public List<Transform> objectsToMove;
     public List<Vector3> newPositions;
 
@@ -40,12 +40,13 @@ public class InteractableObject : MonoBehaviour, IInteractable
         if (imageToShow != null)
             imageToShow.SetActive(true);
 
-        // 오브젝트 활성화/비활성화
+        // 오브젝트 활성화
         foreach (GameObject obj in objectsToActivate)
             if (obj != null) obj.SetActive(true);
 
-        foreach (GameObject obj in objectsToDeactivate)
-            if (obj != null) obj.SetActive(false); // 여기서 작동 안 했던 문제 해결
+        // 오브젝트 삭제
+        foreach (GameObject obj in objectsToDestroy)
+            if (obj != null) Destroy(obj);
 
         // 오브젝트 위치 이동
         for (int i = 0; i < Mathf.Min(objectsToMove.Count, newPositions.Count); i++)
@@ -60,7 +61,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
         {
             if (interactionPrompt != null)
                 interactionPrompt.SetActive(false);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
