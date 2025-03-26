@@ -1,4 +1,5 @@
 using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,15 +9,13 @@ public class PlayerController : MonoBehaviour
     [Header("이동 설정")]
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
-
-    [Header("바닥 체크")]
-    public Transform groundCheck;         // 바닥 감지용 빈 오브젝트
-    public float checkRadius = 0.2f;      // 감지 범위
-    public LayerMask groundLayer;         // Ground 레이어
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    public float groundCheckRadius = 0.1f;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
-    private float horizontalInput;
+    private bool isGrounded = false;
+    private bool canMove = true;
 
     private void Awake()
     {
@@ -25,35 +24,46 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive()) return;
+        if (!canMove) return;
+
+        float move = Input.GetAxisRaw("Horizontal");
+
+        // 이동 처리
+        rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
+
+        // 방향 반전 처리
+        if (move != 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Sign(move) * Mathf.Abs(scale.x); // 좌우 반전
+            transform.localScale = scale;
+        }
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            Jump();
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
 
     private void FixedUpdate()
     {
-        Move();
-        GroundCheck();
+        CheckGrounded();
     }
 
-    private void Move()
+    private void CheckGrounded()
     {
-        rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+        if (groundCheck == null) return;
+
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
-    private void Jump()
+    public void SetMovementEnabled(bool enabled)
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        canMove = enabled;
+        if (!enabled)
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
-
-    private void GroundCheck()
-    {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
-    }
-
-    public bool IsGrounded() => isGrounded;
 }
-

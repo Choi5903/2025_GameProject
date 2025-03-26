@@ -75,4 +75,3 @@ crashlytics-build.properties
 
 #폰트 asset 파일 제외 meta파일은 유지
 /[Aa]ssets/Fonts/*
-!/[Aa]ssets/Fonts/*.meta
