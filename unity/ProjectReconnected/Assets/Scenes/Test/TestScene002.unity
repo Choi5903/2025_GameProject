@@ -15795,6 +15795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 11400000, guid: 1ecf6ffa236e2c3479d49dd456860e99, type: 2}
   interactionPrompt: {fileID: 658350695}
+  objectToTrigger: {fileID: 0}
 --- !u!114 &1517381228
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public class SceneTimeStateMapping
+{
+    public string sceneName;
+    public TimeState startTimeState;
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -11,6 +18,8 @@ public class GameManager : MonoBehaviour
     public GameData gameData = new GameData();
 
     [Header("초기 복원율")]
+    [Header("초기 복원율 설정")]
+    public bool useInitialRestorationRate = true;  // ✅ 토글 추가
     public float initialRestorationRate = 40f;
 
     [Header("시간 상태")]
@@ -26,6 +35,10 @@ public class GameManager : MonoBehaviour
     [Header("복원율 임계값")]
     public float restorationThreshold = 20f;
 
+    [Header("씬별 시작 시간 설정")]
+    public List<SceneTimeStateMapping> sceneTimeMappings;
+    private Dictionary<string, TimeState> sceneTimeDict = new Dictionary<string, TimeState>();
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,6 +46,14 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            foreach (var mapping in sceneTimeMappings)
+            {
+                if (!sceneTimeDict.ContainsKey(mapping.sceneName))
+                {
+                    sceneTimeDict.Add(mapping.sceneName, mapping.startTimeState);
+                }
+            }
         }
         else Destroy(gameObject);
     }
@@ -49,13 +70,24 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        currentTimeState = TimeState.Present;
+        if (sceneTimeDict.TryGetValue(scene.name, out TimeState startState))
+        {
+            currentTimeState = startState;
+        }
+        else
+        {
+            currentTimeState = TimeState.Present;
+        }
+
         InitializeGameState();
     }
 
     private void InitializeGameState()
     {
-        gameData.restorationRate = initialRestorationRate;
+        if (useInitialRestorationRate)
+        {
+            gameData.restorationRate = initialRestorationRate;
+        }
 
         TimeObjectManager.Instance?.UpdateStates(currentTimeState);
         GameUIManager.Instance?.UpdateRestorationUI(gameData.restorationRate);

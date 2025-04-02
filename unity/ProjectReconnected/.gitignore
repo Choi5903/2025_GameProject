@@ -75,3 +75,11 @@ crashlytics-build.properties
 
 #폰트 asset 파일 제외 meta파일은 유지
 /[Aa]ssets/Fonts/*
+
+# Third-party plugins and assets
+Assets/Plugins/Demigiant/
+Assets/Demigiant/
+Assets/DOTweenPro/
+Assets/Plugins/ES3/
+# Easy Save 3 제외
+Assets/Plugins/Easy Save 3/

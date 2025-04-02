@@ -19,6 +19,17 @@ public class TriggerInteractionActivator : MonoBehaviour
                 interactable.Interact();
                 Debug.Log($"🔘 버튼 트리거 작동: {interactableTarget.name} 상호작용 실행됨");
             }
+
+            // ✅ 플레이어라면 애니메이션 상태도 idle로 강제 전환
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                Animator animator = player.GetComponent<Animator>();
+                if (animator != null)
+                {
+                    animator.SetBool("isWalking", false);
+                }
+            }
         }
     }
 }

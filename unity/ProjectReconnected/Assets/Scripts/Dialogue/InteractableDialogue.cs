@@ -1,13 +1,17 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class InteractableDialogue : MonoBehaviour, IInteractable
 {
     [Header("대화 데이터")]
     public DialogueData dialogueData;
 
+    [Header("UI")]
     public GameObject interactionPrompt;
+
+    [Header("대화 후 작동할 상호작용 오브젝트")]
+    public InteractableObject objectToTrigger;
 
     private bool hasInteracted = false;
 
@@ -19,7 +23,7 @@ public class InteractableDialogue : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (hasInteracted || DialogueManager.Instance.IsDialogueActive()) return;
+        if (hasInteracted || DialogueManager.Instance.IsDialogueActive) return;
 
         if (dialogueData == null)
         {
@@ -27,13 +31,24 @@ public class InteractableDialogue : MonoBehaviour, IInteractable
             return;
         }
 
-        DialogueManager.Instance.StartDialogue(dialogueData);
         hasInteracted = true;
-    }
 
-    public void ResetInteraction()
-    {
-        hasInteracted = false;
+        // 플레이어 이동 잠금
+        PlayerController player = FindObjectOfType<PlayerController>();
+        if (player != null)
+            player.SetMovementEnabled(false);
+
+        // 대화 시작
+        DialogueManager.Instance.StartDialogue(dialogueData, () =>
+        {
+            // 대화 종료 후 실행할 내용
+            if (objectToTrigger != null)
+                objectToTrigger.Interact();
+
+            // 플레이어 이동 다시 허용
+            if (player != null)
+                player.SetMovementEnabled(true);
+        });
     }
 
     public void ShowInteractionUI(bool show)
@@ -46,7 +61,7 @@ public class InteractableDialogue : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player"))
         {
-            ResetInteraction(); // 충돌 해제 시 상호작용 플래그 리셋
+            hasInteracted = false;
         }
     }
 }
