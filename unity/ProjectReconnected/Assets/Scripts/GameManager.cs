@@ -26,9 +26,6 @@ public class GameManager : MonoBehaviour
     public TimeState currentTimeState = TimeState.Present;
     public List<TimeState> availableTimeStates = new List<TimeState> { TimeState.Past, TimeState.Present };
 
-    [Header("시점 전환 효과")]
-    public TimePostFX timePostFX;
-
     [Header("시점 전환 페널티")]
     public float restorationPenaltyOnTimeShift = 5f;
 
@@ -85,27 +82,20 @@ public class GameManager : MonoBehaviour
     private void InitializeGameState()
     {
         if (useInitialRestorationRate)
-        {
             gameData.restorationRate = initialRestorationRate;
-        }
 
         TimeObjectManager.Instance?.UpdateStates(currentTimeState);
         GameUIManager.Instance?.UpdateRestorationUI(gameData.restorationRate);
         GameUIManager.Instance?.UpdateClueUI(gameData.memoryClues);
-
-        if (timePostFX != null)
-        {
-            if (currentTimeState == TimeState.Past)
-                timePostFX.SetPastVisual();
-            else
-                timePostFX.SetPresentVisual();
-        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)) ShiftTime(-1);
         else if (Input.GetKeyDown(KeyCode.E)) ShiftTime(1);
+        else if (Input.GetKeyDown(KeyCode.R)) ChangeRestoration(30);
+
+
     }
 
     public void ShiftTime(int direction)
@@ -132,16 +122,6 @@ public class GameManager : MonoBehaviour
         if (restorationPenaltyOnTimeShift > 0f)
         {
             ChangeRestoration(-restorationPenaltyOnTimeShift);
-        }
-
-        if (timePostFX != null)
-        {
-            if (currentTimeState == TimeState.Past)
-                timePostFX.SetPastVisual();
-            else
-                timePostFX.SetPresentVisual();
-
-            timePostFX.PlayGlitchEffect();
         }
 
         TimeObjectManager.Instance?.UpdateStates(currentTimeState);

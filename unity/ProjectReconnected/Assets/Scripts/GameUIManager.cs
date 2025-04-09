@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameUIManager : MonoBehaviour
 {
     public static GameUIManager Instance;
 
     [Header("복원율 UI")]
-    public TMP_Text restorationText;
-    public Slider restorationBar;
+    public TextMeshProUGUI restorationText;
+    public Image restorationCircleFill;
 
     [Header("단서 UI")]
-    public TMP_Text clueText;
+    public TextMeshProUGUI clueText;
 
     private void Awake()
     {
@@ -23,12 +21,17 @@ public class GameUIManager : MonoBehaviour
 
     public void UpdateRestorationUI(float value)
     {
-        restorationText.text = $"Restoration: {value}%";
-        restorationBar.value = value / 100f;
+        restorationText.text = $"Restoration\n{Mathf.RoundToInt(value)}%";
+
+        // 0 ~ 100 값을 0 ~ 1로 변환하여 원형 UI 반영
+        if (restorationCircleFill != null)
+        {
+            restorationCircleFill.fillAmount = Mathf.Clamp01(value / 100f);
+        }
     }
 
-    public void UpdateClueUI(int count)
+    public void UpdateClueUI(int clues)
     {
-        clueText.text = $"Clues: {count}";
+        clueText.text = $"Clues\n{clues}";
     }
 }
