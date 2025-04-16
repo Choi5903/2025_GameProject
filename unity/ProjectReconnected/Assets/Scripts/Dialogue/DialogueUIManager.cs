@@ -12,7 +12,9 @@ public class DialogueUIManager : MonoBehaviour
     public GameObject dialoguePanel;
     public TMP_Text speakerNameText;
     public TMP_Text dialogueText;
-    public Image speakerImage;
+    public Image leftCharacterImage;
+    public Image rightCharacterImage;
+    public Image extraImage;
 
     private void Awake()
     {
@@ -20,13 +22,21 @@ public class DialogueUIManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void ShowDialogue(string speakerName, string sentence, Sprite portrait = null)
+    public void ShowDialogue(string speakerName, string sentence,
+                             Sprite leftCG, Sprite rightCG, Sprite extra)
     {
         dialoguePanel.SetActive(true);
         speakerNameText.text = speakerName;
         dialogueText.text = sentence;
-        if (portrait != null)
-            speakerImage.sprite = portrait;
+
+        if (leftCharacterImage != null)
+            leftCharacterImage.sprite = leftCG;
+
+        if (rightCharacterImage != null)
+            rightCharacterImage.sprite = rightCG;
+
+        if (extraImage != null)
+            extraImage.sprite = extra;
     }
 
     public void HideDialogue()

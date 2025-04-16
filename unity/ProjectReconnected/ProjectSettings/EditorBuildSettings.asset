@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test/Stage001 3.unity
     guid: 55881f58fc1c289469e09ceb33b387d2
+  - enabled: 1
+    path: Assets/Scenes/minigameTest.unity
+    guid: 498e6bc102e0bcc428cd3742b01f9d14
   m_configObjects: {}

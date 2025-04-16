@@ -29,6 +29,7 @@ public class TitleUIManager : MonoBehaviour
     void OnLoadClicked()
     {
         Debug.Log("로드 버튼 클릭됨 - 기능 미구현");
+        SceneManager.LoadScene("minigameTest");
         // TODO: 추후 로드 기능 구현
     }
 

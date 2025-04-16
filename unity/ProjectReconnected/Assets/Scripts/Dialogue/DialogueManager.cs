@@ -41,9 +41,6 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = true;
         onDialogueEnd = endCallback;
 
-        if (PlayerController.Instance != null)
-            PlayerController.Instance.SetMovementEnabled(false);
-
         LockPlayer();
         DisplayNextSentence();
     }
@@ -57,7 +54,14 @@ public class DialogueManager : MonoBehaviour
         }
 
         DialogueLine line = sentences.Dequeue();
-        DialogueUIManager.Instance.ShowDialogue(line.speakerName, line.sentence, line.portrait);
+
+        DialogueUIManager.Instance.ShowDialogue(
+            line.speakerName,
+            line.sentence,
+            line.characterCGLeft,
+            line.characterCGRight,
+            line.extraImage
+        );
     }
 
     public void EndDialogue()
@@ -65,11 +69,9 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = false;
         DialogueUIManager.Instance.HideDialogue();
 
-        if (PlayerController.Instance != null)
-            PlayerController.Instance.SetMovementEnabled(true);
-
         onDialogueEnd?.Invoke();
         onDialogueEnd = null;
+
         UnlockPlayer();
     }
 
@@ -79,12 +81,9 @@ public class DialogueManager : MonoBehaviour
         {
             player.SetMovementEnabled(false);
 
-            // ✅ 애니메이터 강제로 idle 설정
             Animator animator = player.GetComponent<Animator>();
             if (animator != null)
-            {
                 animator.SetBool("isWalking", false);
-            }
         }
     }
 
