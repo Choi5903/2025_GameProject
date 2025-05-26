@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97a5b98f540a1149abcd01f2ba3a560, type: 3}
+  m_Name: NewDialogueData0011
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - speakerName: '-'
+    sentence: '-'
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: Player
+    sentence: "\uC2A4\uD06C\uB9B0 \uB3C4\uC5B4\uAC00 \uB2EB\uD600\uC788\uC796\uC544."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: Player
+    sentence: "\uC73C\uC74C..."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: Player
+    sentence: "\uAC04\uB2E8\uD55C \uD574\uD0B9\uC73C\uB85C \uC5F4 \uC218 \uC788\uC744
+      \uAC70 \uAC19\uC544."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}

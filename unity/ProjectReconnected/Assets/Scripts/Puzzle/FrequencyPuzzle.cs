@@ -3,15 +3,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class FrequencyPuzzle : MonoBehaviour
+public class FrequencyPuzzle : MiniGameBase
 {
     [System.Serializable]
     public class FrequencySlider
     {
         public Slider slider;
         public Image feedbackImage;
-        public float targetValue;     // 정답 값 (0~1)
-        public float tolerance = 0.05f; // 허용 오차
+        public float targetValue;
+        public float tolerance = 0.05f;
 
         public bool IsCorrect()
         {
@@ -32,7 +32,7 @@ public class FrequencyPuzzle : MonoBehaviour
     }
 
     public List<FrequencySlider> sliders;
-    public GameObject clearPanel;
+    //public GameObject clearPanel;
 
     private bool isCleared = false;
 
@@ -44,7 +44,7 @@ public class FrequencyPuzzle : MonoBehaviour
             s.UpdateFeedback();
         }
 
-        clearPanel.SetActive(false);
+        //clearPanel.SetActive(false);
     }
 
     void OnSliderChanged()
@@ -57,13 +57,10 @@ public class FrequencyPuzzle : MonoBehaviour
         if (CheckAllCorrect())
         {
             isCleared = true;
-            clearPanel.SetActive(true);
+            //clearPanel.SetActive(true);
             Debug.Log("주파수 퍼즐 클리어!");
 
-            // 미니게임 매니저 호출
-            MiniGameManager mgr = FindObjectOfType<MiniGameManager>();
-            if (mgr != null)
-                mgr.OnMiniGameClear();
+            NotifyClear();
         }
     }
 
@@ -77,10 +74,10 @@ public class FrequencyPuzzle : MonoBehaviour
         return true;
     }
 
-    public void ResetGame()
+    public override void ResetGame()
     {
         isCleared = false;
-        clearPanel?.SetActive(false);
+        //clearPanel?.SetActive(false);
 
         foreach (var s in sliders)
         {
@@ -88,5 +85,4 @@ public class FrequencyPuzzle : MonoBehaviour
             s.UpdateFeedback();
         }
     }
-
 }

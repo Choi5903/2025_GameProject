@@ -34,10 +34,24 @@ public class DialogueDataEditor : Editor
             EditorGUILayout.PropertyField(line.FindPropertyRelative("extraImage"), new GUIContent("추가 이미지 (이펙트 등)"));
 
             EditorGUILayout.Space(5);
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button("▲", GUILayout.Width(30)))
+            {
+                if (i > 0)
+                    dialogueLines.MoveArrayElement(i, i - 1);
+            }
+            if (GUILayout.Button("▼", GUILayout.Width(30)))
+            {
+                if (i < dialogueLines.arraySize - 1)
+                    dialogueLines.MoveArrayElement(i, i + 1);
+            }
+
+            GUILayout.FlexibleSpace();
             if (GUILayout.Button("🗑 Remove Line"))
             {
                 dialogueLines.DeleteArrayElementAtIndex(i);
             }
+            EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.EndVertical();
             EditorGUILayout.Space();

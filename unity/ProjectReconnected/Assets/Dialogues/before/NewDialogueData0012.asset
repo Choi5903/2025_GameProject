@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97a5b98f540a1149abcd01f2ba3a560, type: 3}
+  m_Name: NewDialogueData0012
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - speakerName: '-'
+    sentence: '-'
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: ???
+    sentence: "\uC548\uB0B4\uB4DC\uB9B0 \uB0B4\uC6A9\uC740 \uC5EC\uAE30\uAE4C\uC9C0
+      \uC785\uB2C8\uB2E4."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: "\uC758\uB8B0\uC778"
+    sentence: "\uC800\uAE30..."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: "\uC758\uB8B0\uC778"
+    sentence: "\uBD80\uC791\uC6A9, \uC2EC\uD55C\uAC00\uC694?"
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: ???
+    sentence: "\uD574\uB2F9 \uC560\uB4DC\uC628\uC740 \uAC15\uD55C \uAD8C\uD658\uC744
+      \uAC00\uC9C0\uAE30 \uB54C\uBB38\uC5D0 \uAE30\uC5B5 \uB370\uC774\uD130\uC758
+      \uAC04\uC12D\uC774 \uC2EC\uD558\uAE34 \uD569\uB2C8\uB2E4."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: ???
+    sentence: "\uADF8\uB85C \uC778\uD574 \uAC74\uB9DD\uC99D \uB4F1\uC774 \uBC1C\uC0DD\uD560
+      \uC218 \uC788\uB2E4\uACE0 \uC124\uBA85\uB4DC\uB838\uACE0\uC694."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: ???
+    sentence: "\uADF8\uB798\uB3C4 \uAC71\uC815\uD558\uC2E4 \uD544\uC694 \uC5C6\uC744
+      \uAC81\uB2C8\uB2E4."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: ???
+    sentence: "\uBB58 \uAC71\uC815\uD588\uB294\uC9C0\uB3C4 \uC2E0\uACBD \uC548 \uC4F0\uAC8C
+      \uB418\uC2E4 \uD14C\uB2C8."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: "\uC758\uB8B0\uC778"
+    sentence: ...
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: "\uC758\uB8B0\uC778"
+    sentence: "\uB124... \uC9C0\uAE08 \uBC14\uB85C \uACB0\uC81C\uD574 \uC8FC\uC138\uC694."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: Player
+    sentence: "\uC6D0\uC778\uC740 \uCC3E\uC558\uB124."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: Player
+    sentence: "\uD558\uC9C0\uB9CC \uC774\uAC74 \uAC74\uB9DD\uC99D \uC815\uB3C4\uAC00
+      \uC544\uB2C8\uC796\uC544."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: Player
+    sentence: "\uAE30\uC5B5\uC774 \uC644\uC804\uD788 \uB36E\uC5B4\uC9C0\uACE0 \uC788\uC5B4."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: Player
+    sentence: "\uC5B4\uB290 \uC815\uB3C4\uB294 \uBCF5\uC6D0\uD588\uC9C0\uB9CC \uC774\uB300\uB85C\uBA74
+      \uB354 \uC2EC\uD574\uC9C8 \uAC70\uC57C."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: Player
+    sentence: "<\uBCF5\uC6D0\uC728 \uC784\uACD7\uAC12 \uB3C4\uB2EC, \uC2DC\uC2A4\uD15C\uC744
+      \uC885\uB8CC\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?>"
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: Player
+    sentence: "\uB3CC\uC544\uAC00\uC11C \uC6D0\uC778\uC744 \uC54C\uB824\uC8FC\uC790."
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}
+  - speakerName: "\uD29C\uD1A0\uB9AC\uC5BC"
+    sentence: "(\uB370\uBAA8\uBC84\uC804 \uCC55\uD130 1 \uC2A4\uD14C\uC774\uC9C0
+      \uC885\uB8CC)"
+    characterCGLeft: {fileID: 0}
+    characterCGRight: {fileID: 0}
+    extraImage: {fileID: 0}

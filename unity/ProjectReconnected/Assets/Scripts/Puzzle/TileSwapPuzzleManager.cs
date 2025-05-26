@@ -1,39 +1,34 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
-public class TileSwapPuzzleManager : MonoBehaviour
+public class TileSwapPuzzleManager : MiniGameBase
 {
-    public List<GameObject> tilePrefabs; // 0~8 순서대로
+    public List<GameObject> tilePrefabs;
     public Transform gridParent;
-    public GameObject clearPanel;
 
     private List<GameObject> tiles = new List<GameObject>();
     private GameObject firstSelected = null;
+    private Vector2[] tilePositions = new Vector2[9];
 
-    private Vector2[] tilePositions = new Vector2[9]; // 3x3 그리드 위치 저장
+    private bool isCleared = false;
 
-    void Start()
+    void OnEnable()
     {
-        GenerateGridPositions();
-        SpawnTiles();
-        clearPanel.SetActive(false);
+        ResetGame(); // 퍼즐 활성화 시 자동 초기화
     }
 
     void GenerateGridPositions()
     {
-        float spacing = 110f;
-        float startX = -spacing; // -110f
-        float startY = spacing;  // 110f
-
+        float tileSize = 100f;
         int index = 0;
-        for (int y = 0; y < 3; y++) // row
+        for (int y = 0; y < 3; y++)
         {
-            for (int x = 0; x < 3; x++) // col
+            for (int x = 0; x < 3; x++)
             {
-                float posX = startX + x * spacing;
-                float posY = startY - y * spacing;
+                float posX = x * tileSize;
+                float posY = -y * tileSize;
                 tilePositions[index] = new Vector2(posX, posY);
                 index++;
             }
@@ -53,10 +48,15 @@ public class TileSwapPuzzleManager : MonoBehaviour
             tile.transform.localPosition = tilePositions[i];
             tile.transform.localScale = Vector3.one;
 
-            TilePiece piece = tile.GetComponent<TilePiece>();
-            piece.correctIndex = prefabIndex; // ex: Tile_2.prefab => 정답 위치는 2번 인덱스
+            RectTransform rect = tile.GetComponent<RectTransform>();
+            if (rect != null)
+            {
+                rect.anchorMin = rect.anchorMax = new Vector2(0, 1);
+                rect.pivot = new Vector2(0, 1);
+            }
 
-            // 현재 위치 인덱스를 태그처럼 저장해도 되고, 아래에서 위치로 판별할 거임
+            TilePiece piece = tile.GetComponent<TilePiece>();
+            piece.correctIndex = prefabIndex;
 
             Button btn = tile.GetComponent<Button>();
             btn.onClick.AddListener(() => OnTileClicked(tile));
@@ -67,6 +67,8 @@ public class TileSwapPuzzleManager : MonoBehaviour
 
     void OnTileClicked(GameObject selected)
     {
+        if (isCleared) return;
+
         if (firstSelected == null)
         {
             firstSelected = selected;
@@ -82,27 +84,7 @@ public class TileSwapPuzzleManager : MonoBehaviour
             SwapPositions(firstSelected, selected);
             HighlightTile(firstSelected, false);
             firstSelected = null;
-
-            if (CheckClear())
-            {
-                clearPanel.SetActive(true);
-                Debug.Log("퍼즐 클리어!");
-
-                // ✅ MiniGameManager에게 알리기
-                MiniGameManager manager = FindObjectOfType<MiniGameManager>();
-                if (manager != null)
-                {
-                    manager.OnMiniGameClear();
-                }
-            }
         }
-    }
-
-    void SwapPositions(GameObject a, GameObject b)
-    {
-        Vector3 temp = a.transform.localPosition;
-        a.transform.localPosition = b.transform.localPosition;
-        b.transform.localPosition = temp;
     }
 
     void HighlightTile(GameObject tile, bool highlight)
@@ -112,16 +94,41 @@ public class TileSwapPuzzleManager : MonoBehaviour
             img.color = highlight ? Color.yellow : Color.white;
     }
 
+    void SwapPositions(GameObject a, GameObject b)
+    {
+        Vector3 temp = a.transform.localPosition;
+        a.transform.localPosition = b.transform.localPosition;
+        b.transform.localPosition = temp;
+
+        // 위치 바뀌었으니 클리어 체크
+        if (!isCleared && CheckClear())
+        {
+            isCleared = true;
+            Debug.Log("✅ 정답입니다! 퍼즐 클리어!");
+            NotifyClear();
+        }
+    }
+
+
     bool CheckClear()
     {
-        for (int i = 0; i < tiles.Count; i++)
+        // 타일들을 localPosition 기준으로 정렬 (왼→오, 위→아래)
+        List<GameObject> sortedTiles = new List<GameObject>(tiles);
+        sortedTiles.Sort((a, b) =>
         {
-            GameObject tile = tiles[i];
-            TilePiece piece = tile.GetComponent<TilePiece>();
+            Vector2 posA = a.transform.localPosition;
+            Vector2 posB = b.transform.localPosition;
 
-            // 현재 위치가 정답 위치 인덱스의 위치와 일치하는지 확인
-            Vector2 correctPos = tilePositions[piece.correctIndex];
-            if (Vector2.Distance(tile.transform.localPosition, correctPos) > 1f)
+            if (Mathf.Abs(posA.y - posB.y) > 1f)
+                return posA.y > posB.y ? -1 : 1;
+            else
+                return posA.x < posB.x ? -1 : 1;
+        });
+
+        for (int i = 0; i < sortedTiles.Count; i++)
+        {
+            TilePiece piece = sortedTiles[i].GetComponent<TilePiece>();
+            if (piece.correctIndex != i)
                 return false;
         }
         return true;
@@ -136,6 +143,7 @@ public class TileSwapPuzzleManager : MonoBehaviour
         }
         return list;
     }
+
     public void ResetPuzzle()
     {
         foreach (var t in tiles)
@@ -143,12 +151,22 @@ public class TileSwapPuzzleManager : MonoBehaviour
         tiles.Clear();
 
         firstSelected = null;
-        clearPanel.SetActive(false);
-
+        isCleared = false;
         SpawnTiles();
     }
-    public void ResetGame()
+
+    public override void ResetGame()
     {
+        GenerateGridPositions();
         ResetPuzzle();
+    }
+
+    void DebugTilePositions()
+    {
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            var tile = tiles[i];
+            Debug.Log($"[Tile {i}] Pos: {tile.transform.localPosition}, Correct: {tile.GetComponent<TilePiece>().correctIndex}");
+        }
     }
 }

@@ -3,31 +3,29 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class LineConnectPuzzle : MonoBehaviour
+public class LineConnectPuzzle : MiniGameBase
 {
     [System.Serializable]
     public class IconSlot
     {
         public RectTransform iconTransform;
         public Image iconImage;
-        public int colorIndex; // 0 ~ 4
+        public int colorIndex;
     }
 
-    public List<IconSlot> leftIcons;  // 고정된 색상 아이콘들
-    public List<IconSlot> rightIcons; // 점멸 후 랜덤 배치
+    public List<IconSlot> leftIcons;
+    public List<IconSlot> rightIcons;
     public GameObject clearPanel;
-    public GameObject linePrefab;     // 라인 프리팹
+    public GameObject linePrefab;
     public Canvas canvas;
 
-    private Dictionary<int, int> connectionMap = new Dictionary<int, int>(); // leftIndex → rightIndex
+    private Dictionary<int, int> connectionMap = new Dictionary<int, int>();
     private Color[] colorSet = new Color[5] { Color.red, Color.blue, Color.green, Color.black, Color.white };
 
     private bool isDragging = false;
     private int currentStartIndex = -1;
     private LineRenderer currentLine;
     private bool isInteractable = false;
-
-
     private List<GameObject> drawnLines = new List<GameObject>();
 
     void Start()
@@ -49,9 +47,10 @@ public class LineConnectPuzzle : MonoBehaviour
             currentLine.SetPosition(1, mouseWorld);
         }
     }
+
     IEnumerator ShowPattern()
     {
-        isInteractable = false; // 🔒 드래그 금지
+        isInteractable = false;
 
         List<int> shuffled = new List<int>() { 0, 1, 2, 3, 4 };
         ShuffleList(shuffled);
@@ -76,7 +75,7 @@ public class LineConnectPuzzle : MonoBehaviour
             icon.iconImage.color = Color.gray;
 
         EnableDragging(true);
-        isInteractable = true; // 🔓 드래그 가능
+        isInteractable = true;
     }
 
     void EnableDragging(bool enable)
@@ -110,9 +109,6 @@ public class LineConnectPuzzle : MonoBehaviour
     {
         if (!isInteractable || isDragging) return;
 
-        // 이미 연결된 왼쪽이면 다시 연결 못하게 막고 싶으면 아래 주석 해제
-        // if (connectionMap.ContainsKey(leftIndex)) return;
-
         isDragging = true;
         currentStartIndex = leftIndex;
 
@@ -120,10 +116,8 @@ public class LineConnectPuzzle : MonoBehaviour
         currentLine.positionCount = 2;
 
         Vector3 worldPos = leftIcons[leftIndex].iconTransform.position;
-        Debug.Log($"[Line Start] Left Icon {leftIndex} World Pos: {worldPos}");
-
         currentLine.SetPosition(0, worldPos);
-        currentLine.SetPosition(1, worldPos); // 초기 끝점도 동일하게
+        currentLine.SetPosition(1, worldPos);
 
         drawnLines.Add(currentLine.gameObject);
     }
@@ -133,12 +127,10 @@ public class LineConnectPuzzle : MonoBehaviour
         if (!isDragging) return;
         isDragging = false;
 
-        // 이미 연결된 오른쪽이면 취소
         if (connectionMap.ContainsValue(rightIndex))
         {
             Destroy(currentLine.gameObject);
             currentLine = null;
-            Debug.Log("이미 연결된 오른쪽 슬롯입니다.");
             return;
         }
 
@@ -172,7 +164,7 @@ public class LineConnectPuzzle : MonoBehaviour
         {
             clearPanel.SetActive(true);
             Debug.Log("연결 퍼즐 클리어!");
-            FindObjectOfType<MiniGameManager>()?.OnMiniGameClear();
+            NotifyClear();
         }
         else
         {
@@ -184,9 +176,8 @@ public class LineConnectPuzzle : MonoBehaviour
     IEnumerator ResetAfterDelay()
     {
         yield return new WaitForSeconds(1f);
-        ResetGame(); // 🔄 패턴 재시작 포함
+        ResetGame();
     }
-
 
     void ResetConnections()
     {
@@ -212,10 +203,10 @@ public class LineConnectPuzzle : MonoBehaviour
         return list;
     }
 
-    public void ResetGame()
+    public override void ResetGame()
     {
         StopAllCoroutines();
-        clearPanel?.SetActive(false); // 안전하게 클리어 패널 닫기
+        clearPanel?.SetActive(false);
 
         foreach (GameObject line in drawnLines)
             Destroy(line);
@@ -225,7 +216,6 @@ public class LineConnectPuzzle : MonoBehaviour
         currentStartIndex = -1;
 
         EnableDragging(true);
-        StartCoroutine(ShowPattern()); // 패턴 다시 보여주기
+        StartCoroutine(ShowPattern());
     }
-
 }

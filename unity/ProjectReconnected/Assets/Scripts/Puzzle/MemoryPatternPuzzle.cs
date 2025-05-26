@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MemoryPatternPuzzle : MonoBehaviour
+public class MemoryPatternPuzzle : MiniGameBase
 {
-    public List<Button> patternButtons; // 순서대로 배치된 버튼들
-    public GameObject clearPanel;
+    public List<Button> patternButtons;
+    //public GameObject clearPanel;
 
-    private List<int> pattern = new List<int>();     // 예: [2, 0, 4, 1, 3]
-    private List<int> input = new List<int>();       // 플레이어의 입력 순서
+    private List<int> pattern = new List<int>();
+    private List<int> input = new List<int>();
     private bool inputEnabled = false;
 
     public float flashDuration = 0.4f;
@@ -21,7 +21,7 @@ public class MemoryPatternPuzzle : MonoBehaviour
 
     void Start()
     {
-        clearPanel.SetActive(false);
+        //clearPanel.SetActive(false);
 
         for (int i = 0; i < patternButtons.Count; i++)
         {
@@ -36,7 +36,7 @@ public class MemoryPatternPuzzle : MonoBehaviour
     IEnumerator PlayPattern()
     {
         inputEnabled = false;
-        pattern = GeneratePattern(5); // 5개의 랜덤 순서 생성
+        pattern = GeneratePattern(5);
         input.Clear();
 
         yield return new WaitForSeconds(1f);
@@ -59,7 +59,7 @@ public class MemoryPatternPuzzle : MonoBehaviour
         {
             int pick = available[Random.Range(0, available.Count)];
             newPattern.Add(pick);
-            available.Remove(pick); // 중복 방지
+            available.Remove(pick);
         }
 
         return newPattern;
@@ -95,9 +95,9 @@ public class MemoryPatternPuzzle : MonoBehaviour
 
         if (isCorrect)
         {
-            clearPanel.SetActive(true);
+            //clearPanel.SetActive(true);
             Debug.Log("패턴 퍼즐 클리어!");
-            FindObjectOfType<MiniGameManager>()?.OnMiniGameClear();
+            NotifyClear();
         }
         else
         {
@@ -129,10 +129,11 @@ public class MemoryPatternPuzzle : MonoBehaviour
     {
         patternButtons[index].GetComponent<Image>().color = color;
     }
-    public void ResetGame()
+
+    public override void ResetGame()
     {
         StopAllCoroutines();
-        clearPanel?.SetActive(false);
+        //clearPanel?.SetActive(false);
 
         for (int i = 0; i < patternButtons.Count; i++)
         {
@@ -143,5 +144,4 @@ public class MemoryPatternPuzzle : MonoBehaviour
         pattern.Clear();
         StartCoroutine(PlayPattern());
     }
-
 }

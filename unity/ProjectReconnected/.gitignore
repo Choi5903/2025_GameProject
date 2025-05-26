@@ -81,5 +81,5 @@ Assets/Plugins/Demigiant/
 Assets/Demigiant/
 Assets/DOTweenPro/
 Assets/Plugins/ES3/
-# Easy Save 3 제외
-Assets/Plugins/Easy Save 3/
+# Plugins 폴더 제외
+Assets/Plugins

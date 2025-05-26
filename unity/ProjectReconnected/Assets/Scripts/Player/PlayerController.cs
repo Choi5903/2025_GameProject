@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
+
     [Header("이동 설정")]
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
@@ -41,7 +42,6 @@ public class PlayerController : MonoBehaviour
         // 애니메이션 파라미터 제어
         if (animator != null)
         {
-            // ✅ 대화 중일 때는 무조건 idle 상태
             if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive)
             {
                 animator.SetBool("isWalking", false);

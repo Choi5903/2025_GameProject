@@ -169,7 +169,7 @@ MonoBehaviour:
   startButton: {fileID: 434543730}
   loadButton: {fileID: 1860937021}
   settingsButton: {fileID: 0}
-  nextSceneName: VNScene_Prologue
+  nextSceneName: Stage1-1
 --- !u!1 &158022819
 GameObject:
   m_ObjectHideFlags: 0

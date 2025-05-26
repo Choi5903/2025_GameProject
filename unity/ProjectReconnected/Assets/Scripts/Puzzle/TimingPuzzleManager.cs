@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimingPuzzleManager : MonoBehaviour
+public class TimingPuzzleManager : MiniGameBase
 {
-    public List<TimingSlider> sliders;   // 5개 슬라이더 (좌 → 우 순서)
+    public List<TimingSlider> sliders;
     public Button stopButton;
     public GameObject clearPanel;
 
@@ -41,7 +41,6 @@ public class TimingPuzzleManager : MonoBehaviour
         float val = sliders[currentIndex].GetCurrentValue();
         if (val >= targetMin && val <= targetMax)
         {
-            // 성공
             sliders[currentIndex].StopSlider();
             currentIndex++;
 
@@ -56,7 +55,6 @@ public class TimingPuzzleManager : MonoBehaviour
         }
         else
         {
-            // 실패
             Debug.Log("타이밍 실패!");
             ResetPuzzle();
         }
@@ -67,9 +65,10 @@ public class TimingPuzzleManager : MonoBehaviour
         puzzleCleared = true;
         clearPanel.SetActive(true);
         Debug.Log("타이밍 퍼즐 클리어!");
-        FindObjectOfType<MiniGameManager>()?.OnMiniGameClear();
+        NotifyClear();
     }
-    public void ResetGame()
+
+    public override void ResetGame()
     {
         ResetPuzzle();
     }
