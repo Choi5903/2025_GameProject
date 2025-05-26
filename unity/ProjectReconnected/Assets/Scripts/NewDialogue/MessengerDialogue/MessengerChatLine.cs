@@ -2,22 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ChatPosition
-{
-    Left,   // 상대방 대사
-    Right   // 플레이어 대사
-}
+public enum ChatPosition { Left, Right }
 
 [System.Serializable]
 public class MessengerChatLine
 {
-    [Header("채팅 텍스트")]
     [TextArea(2, 4)]
     public string message;
-
-    [Header("출력 위치 (좌/우)")]
     public ChatPosition position;
 
-    [Header("첨부 이미지 (Optional)")]
-    public Sprite attachmentImage;
+    [Range(1, 3)]
+    public int sizeLevel = 2; // 1=소형, 2=중형, 3=대형
 }

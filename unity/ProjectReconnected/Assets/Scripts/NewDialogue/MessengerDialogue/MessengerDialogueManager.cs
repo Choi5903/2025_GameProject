@@ -12,8 +12,14 @@ public class MessengerDialogueManager : MonoBehaviour
     public GameObject messengerPanel;
     public RectTransform chatContentArea;
     public ScrollRect scrollRect;
-    public GameObject leftMessagePrefab;
-    public GameObject rightMessagePrefab;
+
+    [Header("메시지 프리팹 (좌/우, 소/중/대)")]
+    public GameObject leftSmall;
+    public GameObject leftMedium;
+    public GameObject leftLarge;
+    public GameObject rightSmall;
+    public GameObject rightMedium;
+    public GameObject rightLarge;
 
     private Queue<MessengerChatLine> chatLines = new Queue<MessengerChatLine>();
     private System.Action onDialogueEnd;
@@ -31,7 +37,7 @@ public class MessengerDialogueManager : MonoBehaviour
     {
         if (!messengerPanel.activeSelf || !isWaitingForInput) return;
 
-        if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             DisplayNextChat();
         }
@@ -39,6 +45,8 @@ public class MessengerDialogueManager : MonoBehaviour
 
     public void StartDialogue(MessengerDialogueData data, System.Action endCallback = null)
     {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(chatContentArea);
+
         if (data == null || data.chatLines.Count == 0)
         {
             Debug.LogWarning("⚠️ 메신저 대화 데이터가 비어 있습니다!");
@@ -54,7 +62,7 @@ public class MessengerDialogueManager : MonoBehaviour
         }
 
         onDialogueEnd = endCallback;
-        DisplayNextChat();
+        StartCoroutine(DelayFirstChat());
     }
 
     public void DisplayNextChat()
@@ -68,58 +76,57 @@ public class MessengerDialogueManager : MonoBehaviour
         }
 
         MessengerChatLine line = chatLines.Dequeue();
-        GameObject prefab = (line.position == ChatPosition.Left) ? leftMessagePrefab : rightMessagePrefab;
+        GameObject prefab = GetBubblePrefab(line.position, line.sizeLevel);
+
         GameObject chatInstance = Instantiate(prefab, chatContentArea);
+        chatInstance.transform.SetParent(chatContentArea, false);
 
-        // 모든 자식 강제 활성화 (혹시라도 비활성 상태로 저장된 경우)
-        Transform[] children = chatInstance.GetComponentsInChildren<Transform>(true);
-        foreach (var child in children)
-        {
-            child.gameObject.SetActive(true);
-        }
-
-        // 안전하게 텍스트 찾기
         TMP_Text messageText = chatInstance.GetComponentInChildren<TMP_Text>(true);
         if (messageText != null)
         {
             messageText.text = line.message;
+            messageText.alignment = (line.position == ChatPosition.Left) ? TextAlignmentOptions.Left : TextAlignmentOptions.Right;
         }
 
-        // 첨부 이미지 처리
-        Image[] allImages = chatInstance.GetComponentsInChildren<Image>(true);
-        foreach (var img in allImages)
-        {
-            if (img.name == "AttachmentImage")
-            {
-                if (line.attachmentImage != null)
-                {
-                    img.sprite = line.attachmentImage;
-                    img.gameObject.SetActive(true);
-                }
-                else
-                {
-                    img.gameObject.SetActive(false);
-                }
-            }
-        }
-
+        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)chatInstance.transform);
         LayoutRebuilder.ForceRebuildLayoutImmediate(chatContentArea);
-        ScrollToBottom();
 
-        isWaitingForInput = true; // 다음 입력 대기
+        ScrollToBottom();
+        isWaitingForInput = true;
+    }
+
+    private GameObject GetBubblePrefab(ChatPosition position, int sizeLevel)
+    {
+        sizeLevel = Mathf.Clamp(sizeLevel, 1, 3);
+        return (position, sizeLevel) switch
+        {
+            (ChatPosition.Left, 1) => leftSmall,
+            (ChatPosition.Left, 2) => leftMedium,
+            (ChatPosition.Left, 3) => leftLarge,
+            (ChatPosition.Right, 1) => rightSmall,
+            (ChatPosition.Right, 2) => rightMedium,
+            (ChatPosition.Right, 3) => rightLarge,
+            _ => leftMedium
+        };
     }
 
     private void EndDialogue()
     {
-        messengerPanel.SetActive(false);
         isWaitingForInput = false;
         onDialogueEnd?.Invoke();
         onDialogueEnd = null;
+    }
+
+    private IEnumerator DelayFirstChat()
+    {
+        yield return null;
+        DisplayNextChat();
     }
 
     private void ScrollToBottom()
     {
         Canvas.ForceUpdateCanvases();
         scrollRect.verticalNormalizedPosition = 0f;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(chatContentArea);
     }
 }

@@ -13,12 +13,45 @@ MonoBehaviour:
   m_Name: NewMessengerDialogueData0001
   m_EditorClassIdentifier: 
   chatLines:
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B81"
+  - message: "\uCC44\uD305"
     position: 1
-    attachmentImage: {fileID: 0}
+    sizeLevel: 1
   - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B82"
-    position: 0
-    attachmentImage: {fileID: 0}
+    position: 1
+    sizeLevel: 2
   - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
     position: 1
-    attachmentImage: {fileID: 0}
+    sizeLevel: 3
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 0
+    sizeLevel: 3
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 0
+    sizeLevel: 2
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 0
+    sizeLevel: 1
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 1
+    sizeLevel: 2
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 1
+    sizeLevel: 2
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 1
+    sizeLevel: 2
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 1
+    sizeLevel: 2
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 1
+    sizeLevel: 2
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 1
+    sizeLevel: 2
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 1
+    sizeLevel: 2
+  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+    position: 1
+    sizeLevel: 2
