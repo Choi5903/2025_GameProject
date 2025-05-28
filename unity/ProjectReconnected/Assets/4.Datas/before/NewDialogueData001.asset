@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97a5b98f540a1149abcd01f2ba3a560, type: 3}
+  m_Name: NewDialogueData001
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - speakerName: "\uD29C\uD1A0\uB9AC\uC5BC"
+    sentence: "(\uD29C\uD1A0\uB9AC\uC5BC\uC5D0 \uD574\uB2F9\uD558\uB294 \uC2A4\uD14C\uC774\uC9C0\uC785\uB2C8\uB2E4.)"
+    portrait: {fileID: 0}
+  - speakerName: "\uD29C\uD1A0\uB9AC\uC5BC"
+    sentence: "(\uD560\uC544\uBC84\uC9C0\uC758 \uAC00\uAC8C\uB97C \uBB3C\uB824\uBC1B\uAC8C
+      \uB41C \uD50C\uB808\uC774\uC5B4\uB294 \uAC04\uB2E8\uD55C \uD14C\uC2A4\uD2B8\uB97C
+      \uC704\uD574 \uC758\uB8B0\uB97C \uC9C4\uD589\uD569\uB2C8\uB2E4.)"
+    portrait: {fileID: 0}
+  - speakerName: "\uD29C\uD1A0\uB9AC\uC5BC"
+    sentence: "(\uD560\uC544\uBC84\uC9C0\uAC00 \uC5BC\uB9C8\uC804 \uC9D1\uC5D0\uC11C
+      \uC783\uC5B4\uBC84\uB9B0 \uC548\uACBD\uC744 \uCC3E\uB294 \uAC83\uC774 \uBAA9\uD45C\uB85C
+      \uAE30\uBCF8\uC801\uC778 \uAE30\uB2A5\uC744 \uC775\uD788\uBA70 \uC9C4\uD589\uD558\uAC8C
+      \uB429\uB2C8\uB2E4.)"
+    portrait: {fileID: 0}
+  - speakerName: "\uC2DC\uC2A4\uD15C"
+    sentence: "<\uBA54\uBAA8\uB9AC \uBD88\uB7EC\uC624\uAE30 \uC644\uB8CC...>"
+    portrait: {fileID: 0}
+  - speakerName: "\uC2DC\uC2A4\uD15C"
+    sentence: "<\uBA54\uBAA8\uB9AC \uC18C\uC720\uC790 : OOO>"
+    portrait: {fileID: 0}
+  - speakerName: "\uC2DC\uC2A4\uD15C"
+    sentence: "<\uD604 \uC2DC\uC810 : 20XX/04/23 13:12:34, \uC57D 14\uC77C \uC804>\r\n<\uC7A5\uC18C
+      : OO\uC2DC OOOO\uB85C 75-3, OOO\uC758 \uC790\uD0DD>\r"
+    portrait: {fileID: 0}
+  - speakerName: "\uC2DC\uC2A4\uD15C"
+    sentence: "<\uC0C1\uD0DC : \uBCF5\uC6D0\uC728 8%...>"
+    portrait: {fileID: 0}
+  - speakerName: "\uD50C\uB808\uC774\uC5B4"
+    sentence: "'\uC775\uC219\uD55C \uACF3\uC774\uC57C, \uB2E4\uD589\uD788 \uD560\uC544\uBC84\uC9C0
+      \uB301\uC5D0 \uC81C\uB300\uB85C \uB3C4\uCC29\uD588\uC5B4.'"
+    portrait: {fileID: 0}
+  - speakerName: "\uD50C\uB808\uC774\uC5B4"
+    sentence: "'\uBA87 \uC8FC \uC804\uC5D0 \uC783\uC5B4 \uBC84\uB9AC\uC168\uB2E4
+      \uD588\uC73C\uB2C8\uAE4C \uC2DC\uC810\uB3C4 \uC801\uB2F9\uD574.'"
+    portrait: {fileID: 0}
+  - speakerName: "\uD50C\uB808\uC774\uC5B4"
+    sentence: "'\uC6B0\uC120 \uC8FC\uBCC0\uC744 \uB458\uB7EC\uBCF4\uC790.'"
+    portrait: {fileID: 0}
+  - speakerName: "\uD29C\uD1A0\uB9AC\uC5BC"
+    sentence: "(\uC774\uB3D9 : \uBC29\uD5A5\uD0A4, \uC810\uD504 : \uC2A4\uD398\uC774\uC2A4,
+      \uC0C1\uD638\uC791\uC6A9 : F)"
+    portrait: {fileID: 0}
