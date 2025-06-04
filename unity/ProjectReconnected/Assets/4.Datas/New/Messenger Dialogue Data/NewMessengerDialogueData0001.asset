@@ -13,45 +13,132 @@ MonoBehaviour:
   m_Name: NewMessengerDialogueData0001
   m_EditorClassIdentifier: 
   chatLines:
-  - message: "\uCC44\uD305"
+  - message: "@RC0604, \uC57C\uC57C!\r"
+    position: 0
+    sizeLevel: 2
+  - message: "\uBB34\uC2A8 \uC77C\uC774\uC57C?"
     position: 1
     sizeLevel: 1
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B82"
-    position: 1
-    sizeLevel: 2
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
-    position: 1
-    sizeLevel: 3
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
-    position: 0
-    sizeLevel: 3
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+  - message: "\uC804\uC5D0 \uC124\uBA85\uD574 \uC92C\uB358\uAC70"
     position: 0
     sizeLevel: 2
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+  - message: "\uB2E4 \uC124\uCE58\uD588\uC9C0?"
     position: 0
     sizeLevel: 1
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+  - message: "\uBCF4\uB0B4\uC900 \uD504\uB85C\uADF8\uB7A8?"
     position: 1
     sizeLevel: 2
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+  - message: "\uD6C4\uD6C4... "
+    position: 0
+    sizeLevel: 1
+  - message: "\uADF8\uAC70 \uC5B4\uB514\uC11C \uC27D\uAC8C \uBABB\uAD6C\uD558\uB294
+      \uAC70\uC57C."
+    position: 0
+    sizeLevel: 3
+  - message: "\uB3C8\uBC8C\uC774\uAC00 \uAD81\uD55C \uB110 \uC704\uD574"
+    position: 0
+    sizeLevel: 2
+  - message: "\uC774 \uB0B4\uAC00 \uC9C1\uC811"
+    position: 0
+    sizeLevel: 1
+  - message: "\uCEE4\uC2A4\uD140\uD55C \uBC84\uC804\uC774\uC9C0."
+    position: 0
+    sizeLevel: 2
+  - message: "\uADF8\uBCF4\uB2E4 \uC5F0\uB77D\uC92C\uB2E4\uB294\uAC74"
     position: 1
     sizeLevel: 2
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+  - message: "\uB9DE\uC544, \uB108\uC5D0\uAC8C \uC904 \uCCAB \uBC88\uC9F8 \uD018\uC2A4\uD2B8."
+    position: 0
+    sizeLevel: 3
+  - message: "\uAC00\uC774\uB4DC \uBB38\uC11C\uB97C \uB300\uCDA9 \uBD24\uC744 \uB110
+      \uC704\uD574"
+    position: 0
+    sizeLevel: 3
+  - message: "\uC774\uBC88\uC5D0\uB294 \uAC04\uB2E8\uD558\uAC8C"
+    position: 0
+    sizeLevel: 2
+  - message: " \uB2E4\uC2DC \uC124\uBA85\uD574\uC8FC\uC9C0."
     position: 1
     sizeLevel: 2
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+  - message: "\uADF8\uB798."
+    position: 1
+    sizeLevel: 1
+  - message: "\uB108\uAC00 \uC124\uCE58\uD55C \uD504\uB85C\uADF8\uB7A8\uC740"
+    position: 0
+    sizeLevel: 2
+  - message: "'\uAE30\uC5B5 \uB370\uC774\uD130 \uBCF5\uC6D0 \uD234'\uC774\uB77C\uB294
+      \uAC78\uB85C"
+    position: 0
+    sizeLevel: 3
+  - message: "\uBA38\uB9BF \uC18D \uCE69\uC744 \uD1B5\uD574 \uC800\uC7A5\uB41C \uAE30\uC5B5\uC744"
+    position: 0
+    sizeLevel: 3
+  - message: "\uB370\uC774\uD130\uB85C \uCD94\uCD9C\uD55C \uB2E4\uC74C"
+    position: 0
+    sizeLevel: 2
+  - message: "\uBCF5\uC6D0, \uC218\uC815 \uD560 \uC218 \uC788\uC5B4."
+    position: 0
+    sizeLevel: 2
+  - message: "\uC218\uC815\uB3C4?"
+    position: 1
+    sizeLevel: 1
+  - message: "\uB108\uB294 \uB0B4\uAC00 \uBCF4\uB0B4\uC900 \uD30C\uC77C\uC744 \uBC1B\uC544\uC11C"
+    position: 0
+    sizeLevel: 3
+  - message: "\uADF8\uB0E5 \uC758\uB8B0\uC778\uC758 \uAE30\uC5B5 \uC190\uC0C1\uC744"
+    position: 0
+    sizeLevel: 3
+  - message: "\uBCF5\uC6D0\uD558\uBA74 \uB05D\uC774\uC57C."
+    position: 0
+    sizeLevel: 2
+  - message: "\uB108\uB3C4 \uBCF4\uC218\uB97C \uBC1B\uACE0"
+    position: 0
+    sizeLevel: 2
+  - message: "\uB098\uB3C4 \uC218\uC218\uB8CC\uB97C \uB9CC\uC9C0\uB294 \uAC70\uC9C0"
+    position: 0
+    sizeLevel: 3
+  - message: "\uADF8\uB807\uAC8C \uC26C\uC6B8\uAC70 \uAC19\uC9C4 \uC54A\uC740\uB370"
+    position: 1
+    sizeLevel: 3
+  - message: "\uC544\uB0D0!\r"
+    position: 0
+    sizeLevel: 1
+  - message: "\uC77C\uBD80\uB7EC \uC26C\uC6B4 \uAC78\uB85C \uAC00\uC838\uC654\uC5B4"
+    position: 0
+    sizeLevel: 3
+  - message: "30\uB300 \uB0A8\uC131\uC774\uACE0"
+    position: 0
+    sizeLevel: 2
+  - message: "\uCD5C\uADFC\uC5D0 \uAE30\uC5B5\uC774 "
+    position: 0
+    sizeLevel: 2
+  - message: "\uC798\uB824\uB098\uAC04 \uAC70 \uAC19\uB2E4\uB098"
+    position: 0
+    sizeLevel: 2
+  - message: "\uB0B4\uAC00 \uBCF4\uAE30\uC5D4 \uADF8\uB0E5 \uAC74\uB9DD\uC99D\uC778\uB370"
+    position: 0
+    sizeLevel: 3
+  - message: "\uBCC4 \uC774\uC0C1 \uC5C6\uC744\uAC70\uC57C."
+    position: 0
+    sizeLevel: 2
+  - message: "\uADF8\uB7FC \uB2E4\uD589\uC774\uACE0"
     position: 1
     sizeLevel: 2
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
-    position: 1
+  - message: '[DATA_630722.mdt]'
+    position: 0
     sizeLevel: 2
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
-    position: 1
+  - message: "\uADF8\uB7FC \uD30C\uC77C \uBC1B\uC544."
+    position: 0
     sizeLevel: 2
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
-    position: 1
+  - message: "\uC218\uACE0\uD574! \uBCF4\uC218\uB294 6:4\uC57C."
+    position: 0
     sizeLevel: 2
-  - message: "\uCC44\uD305 \uD14C\uC2A4\uD2B83"
+  - message: "\uC124\uBA85 \uB05D?"
     position: 1
-    sizeLevel: 2
+    sizeLevel: 1
+  - message: "\uB0B4\uAC00 6 \uB9DE\uC9C0?"
+    position: 1
+    sizeLevel: 1
+  - message: "\uC57C."
+    position: 1
+    sizeLevel: 1

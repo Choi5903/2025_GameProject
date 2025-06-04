@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         if (!canMove) return;
 
         float move = Input.GetAxisRaw("Horizontal");
+
         if (isGrounded && Mathf.Abs(move) > 0.01f)
         {
             stepTimer -= Time.deltaTime;
@@ -51,27 +52,23 @@ public class PlayerController : MonoBehaviour
         {
             stepTimer = 0f;
         }
+
         // 이동 처리
         rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
 
-        // 애니메이션 파라미터 제어
+        // 애니메이션 제어
         if (animator != null)
         {
-            if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive)
-            {
-                animator.SetBool("isWalking", false);
-            }
-            else
-            {
-                animator.SetBool("isWalking", Mathf.Abs(move) > 0.01f);
-            }
+            bool isWalking = Mathf.Abs(move) > 0.01f;
+            animator.SetBool("isWalking", isWalking);
+            animator.SetBool("isJumping", !isGrounded); // 점프 상태 처리
         }
 
         // 방향 반전 처리
         if (move != 0)
         {
             Vector3 scale = transform.localScale;
-            scale.x = Mathf.Sign(move) * Mathf.Abs(scale.x); // 좌우 반전
+            scale.x = Mathf.Sign(move) * Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
 
@@ -81,6 +78,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
+
 
     private void FixedUpdate()
     {

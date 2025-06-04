@@ -14,6 +14,7 @@ public class SFXManager : MonoBehaviour
     public AudioClip dialogueNext;
     public AudioClip WindowOpen;
     public AudioClip WindowClose;
+    public AudioClip NoticeOpen;
 
     [Header("화면 연출 효과음")]
     public AudioClip glitchSound;
@@ -66,7 +67,10 @@ public class SFXManager : MonoBehaviour
     {
         PlaySound(WindowClose);
     }
-
+    public void NoticeOn()
+    {
+        PlaySound(NoticeOpen);
+    }
     public void PlayDialogueNext()
     {
         PlaySound(dialogueNext);

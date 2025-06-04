@@ -24,6 +24,14 @@ public class EventCompletePair
     public GameObject targetEventObject; // 이후 실행할 대상
 }
 
+[System.Serializable]
+public class UIButtonMethodPair
+{
+    public Button button;
+    public MonoBehaviour targetScript;
+    public string methodName; // public void 메서드명
+}
+
 public class UIStorySceneManager : MonoBehaviour
 {
     [Header("씬 시작 시 실행할 이벤트 오브젝트들")]

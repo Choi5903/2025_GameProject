@@ -32,40 +32,67 @@ public class InteractableObject : MonoBehaviour, IInteractable
     {
         // 복원율 및 단서 변경
         if (restorationChange != 0)
-            SFXManager.Instance.PlayClueSound();
-            GameManager.Instance.ChangeRestoration(restorationChange);
+        {
+            if (SFXManager.Instance != null)
+                SFXManager.Instance.PlayClueSound();
+
+            if (GameManager.Instance != null)
+                GameManager.Instance.ChangeRestoration(restorationChange);
+        }
+
         if (clueChange != 0)
-            SFXManager.Instance.PlayClueSound();
-            GameManager.Instance.ChangeMemoryClues(clueChange);
+        {
+            if (SFXManager.Instance != null)
+                SFXManager.Instance.PlayClueSound();
+
+            if (GameManager.Instance != null)
+                GameManager.Instance.ChangeMemoryClues(clueChange);
+        }
 
         // 이미지 출력
         if (imageToShow != null)
             imageToShow.SetActive(true);
 
         // 오브젝트 활성화
-        foreach (GameObject obj in objectsToActivate)
-            if (obj != null) obj.SetActive(true);
+        if (objectsToActivate != null)
+        {
+            foreach (GameObject obj in objectsToActivate)
+            {
+                if (obj != null) obj.SetActive(true);
+            }
+        }
 
         // 오브젝트 삭제
-        foreach (GameObject obj in objectsToDestroy)
-            if (obj != null) Destroy(obj);
+        if (objectsToDestroy != null)
+        {
+            foreach (GameObject obj in objectsToDestroy)
+            {
+                if (obj != null) Destroy(obj);
+            }
+        }
 
         // 오브젝트 위치 이동
-        for (int i = 0; i < Mathf.Min(objectsToMove.Count, newPositions.Count); i++)
+        if (objectsToMove != null && newPositions != null)
         {
-            if (objectsToMove[i] != null)
-                objectsToMove[i].position = newPositions[i];
+            for (int i = 0; i < Mathf.Min(objectsToMove.Count, newPositions.Count); i++)
+            {
+                if (objectsToMove[i] != null)
+                    objectsToMove[i].position = newPositions[i];
+            }
         }
 
         yield return null;
 
+        // 자기 자신 제거
         if (deactivateSelf)
         {
             if (interactionPrompt != null)
                 interactionPrompt.SetActive(false);
+
             Destroy(gameObject);
         }
     }
+
 
     public void ShowInteractionUI(bool show)
     {
