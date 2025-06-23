@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
+    private Transform currentPlatform = null;
+    private Vector3 lastPlatformPosition;
 
     [Header("이동 설정")]
     public float moveSpeed = 5f;
@@ -19,6 +21,10 @@ public class PlayerController : MonoBehaviour
     private bool canMove = true;
 
     private Animator animator;
+    [Header("치트 기능 (Z키)")]
+    public GameObject guardObject; // 가드 오브젝트 연결
+    private bool cheatGuardActive = false;
+    private float fixedYPosition;
 
     private void Awake()
     {
@@ -77,12 +83,62 @@ public class PlayerController : MonoBehaviour
             SFXManager.Instance.PlayJumpSound();
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+        // Z 키 치트 - 가드 오브젝트 토글 + Y축 고정
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            cheatGuardActive = !cheatGuardActive;
+
+            if (guardObject != null)
+                guardObject.SetActive(cheatGuardActive);
+
+            if (cheatGuardActive)
+            {
+                fixedYPosition = transform.position.y;
+                Debug.Log("🛡️ 가드 활성화 + Y축 고정");
+            }
+            else
+            {
+                Debug.Log("❌ 가드 비활성화 + Y축 고정 해제");
+            }
+        }
+
     }
-
-
     private void FixedUpdate()
     {
         CheckGrounded();
+        // 플랫폼 이동 보정
+        if (isGrounded && currentPlatform != null)
+        {
+            Vector3 delta = currentPlatform.position - lastPlatformPosition;
+            rb.position += new Vector2(delta.x, delta.y); // 위치에 직접 더하기
+        }
+        if (currentPlatform != null)
+        {
+            lastPlatformPosition = currentPlatform.position;
+        }
+
+        if (cheatGuardActive)
+        {
+            rb.position = new Vector2(rb.position.x, fixedYPosition);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & groundLayer) != 0)
+        {
+            if (collision.gameObject.CompareTag("MovingPlatform"))
+            {
+                currentPlatform = collision.transform;
+                lastPlatformPosition = currentPlatform.position;
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform == currentPlatform)
+        {
+            currentPlatform = null;
+        }
     }
 
     private void CheckGrounded()

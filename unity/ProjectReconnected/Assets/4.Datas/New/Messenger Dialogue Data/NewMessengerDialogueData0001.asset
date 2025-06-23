@@ -58,7 +58,7 @@ MonoBehaviour:
     position: 0
     sizeLevel: 2
   - message: " \uB2E4\uC2DC \uC124\uBA85\uD574\uC8FC\uC9C0."
-    position: 1
+    position: 0
     sizeLevel: 2
   - message: "\uADF8\uB798."
     position: 1

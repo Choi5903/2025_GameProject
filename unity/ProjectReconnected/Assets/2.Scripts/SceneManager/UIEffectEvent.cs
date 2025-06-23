@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,23 +13,24 @@ public class UIEffectEvent : MonoBehaviour, IBeginEvent, IStoryEventNotifier
 {
     public UIEffectType effectType;
 
-    [Header("°øÅë")]
+    [Header("ê³µí†µ")]
     public float duration = 0.5f;
 
-    [Header("ÆäÀÌµå Àü¿ë")]
+    [Header("í˜ì´ë“œ ì „ìš©")]
     public CanvasGroup fadeCanvasGroup;
+    public float waitAfterFadeIn = 1f; // ì¶”ê°€ëœ ëŒ€ê¸° ì‹œê°„
 
-    [Header("±Û¸®Ä¡ Àü¿ë")]
+    [Header("ê¸€ë¦¬ì¹˜ ì „ìš©")]
     public Image glitchImageRenderer;
     public Sprite[] glitchSprites;
     public float glitchInterval = 0.05f;
 
-    [Header("Ä«¸Ş¶ó Èçµé¸² Àü¿ë")]
+    [Header("ì¹´ë©”ë¼ í”ë“¤ë¦¼ ì „ìš©")]
     public RectTransform shakeTarget;
     public float shakeIntensity = 0.2f;
     public float shakeSpeed = 50f;
 
-    [Header("È¿°úÀ½")]
+    [Header("íš¨ê³¼ìŒ")]
     [SerializeField] private AudioClip effectSFX;
 
     private UIStorySceneManager manager;
@@ -52,16 +53,14 @@ public class UIEffectEvent : MonoBehaviour, IBeginEvent, IStoryEventNotifier
                 break;
             case UIEffectType.CameraShake:
                 SFXManager.Instance.PlayShakeSound();
-                StartCoroutine(UIPanelShakeRoutine(onComplete)); // º¯°æ
+                StartCoroutine(UIPanelShakeRoutine(onComplete)); // ë³€ê²½
                 break;
         }
     }
-
-
     IEnumerator FadeInOutRoutine(System.Action onComplete)
     {
-        float fadeInTime = duration * 0.6f;
-        float fadeOutTime = duration * 0.4f;
+        float fadeInTime = duration * 0.5f;
+        float fadeOutTime = duration * 0.5f;
 
         float t = 0f;
         while (t < fadeInTime)
@@ -70,18 +69,20 @@ public class UIEffectEvent : MonoBehaviour, IBeginEvent, IStoryEventNotifier
             t += Time.deltaTime;
             yield return null;
         }
-
         fadeCanvasGroup.alpha = 1f;
-        t = 0f;
 
+        // âœ… í˜ì´ë“œ ì¸ í›„ ëŒ€ê¸°
+        yield return new WaitForSeconds(waitAfterFadeIn);
+
+        t = 0f;
         while (t < fadeOutTime)
         {
             fadeCanvasGroup.alpha = Mathf.Lerp(1f, 0f, t / fadeOutTime);
             t += Time.deltaTime;
             yield return null;
         }
-
         fadeCanvasGroup.alpha = 0f;
+
         onComplete?.Invoke();
         manager?.NotifyEventCompleted(this);
     }
@@ -97,11 +98,11 @@ public class UIEffectEvent : MonoBehaviour, IBeginEvent, IStoryEventNotifier
             glitchImageRenderer.sprite = glitchSprites[index];
             //glitchImageRenderer.SetNativeSize();
 
-            glitchImageRenderer.color = new Color(1f, 1f, 1f, 1f); // º¸ÀÌ°Ô
-            yield return new WaitForSeconds(glitchInterval * 0.5f); // º¸ÀÌ´Â ½Ã°£
+            glitchImageRenderer.color = new Color(1f, 1f, 1f, 1f); // ë³´ì´ê²Œ
+            yield return new WaitForSeconds(glitchInterval * 0.5f); // ë³´ì´ëŠ” ì‹œê°„
 
-            glitchImageRenderer.color = new Color(1f, 1f, 1f, 0f); // ¼û±è
-            yield return new WaitForSeconds(glitchInterval * 0.5f); // ¼û±â´Â ½Ã°£
+            glitchImageRenderer.color = new Color(1f, 1f, 1f, 0f); // ìˆ¨ê¹€
+            yield return new WaitForSeconds(glitchInterval * 0.5f); // ìˆ¨ê¸°ëŠ” ì‹œê°„
 
             elapsed += glitchInterval;
         }

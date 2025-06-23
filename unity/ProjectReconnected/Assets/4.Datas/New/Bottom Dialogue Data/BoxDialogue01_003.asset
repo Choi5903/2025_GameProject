@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e929a8e196d11444d8c781f68f06b094, type: 3}
+  m_Name: BoxDialogue01_003
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - speakerName: System
+    sentence: "<\uC5ED \uB0B4\uBD80\uB3C4 \uC190\uC0C1\uC774 \uC2EC\uD574\uBCF4\uC5EC\uC694.>"
+    backgroundImage: {fileID: 0}
+  - speakerName: System
+    sentence: "<\uC55E\uC5D0 \uBCF4\uC774\uB294 '\uAE00\uB9AC\uCE58'\uC5D0 \uB2FF\uC73C\uBA74
+      \uB370\uC774\uD130\uAC00 \uC190\uC0C1 \uB420 \uC704\uD5D8\uC774 \uC788\uC73C\uB2C8>"
+    backgroundImage: {fileID: 0}
+  - speakerName: System
+    sentence: "<\uC870\uC2EC\uD788 \uD53C\uD574\uC11C \uC9C0\uB098\uAC00\uC694.>"
+    backgroundImage: {fileID: 0}

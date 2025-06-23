@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/1.Scenes/DEMO/Demo_02_C1_Synopsis.unity
     guid: 0d5f86da4291f8846a73b1c338be5188
   - enabled: 1
-    path: Assets/1.Scenes/DEMO/Demo_03_C1_Puzzle.unity
-    guid: 76411efb3ec115b4ab8f4df652aa8beb
+    path: Assets/1.Scenes/DEMO/Demo_02_C1_Stage.unity
+    guid: 17e64a43c003cce49ae5397cae6211e0
   - enabled: 1
-    path: Assets/1.Scenes/DEMO/Demo_03_C1_Puzzle 1.unity
-    guid: fd4ab28effe30514893d71143146e202
+    path: Assets/1.Scenes/DEMO/Demo_02_C1_Epilogue.unity
+    guid: 28bb75e4930bde5459cea9a687d707a5
   m_configObjects: {}

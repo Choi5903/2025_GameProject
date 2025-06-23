@@ -15,7 +15,7 @@ public class LineConnectPuzzle : MiniGameBase
 
     public List<IconSlot> leftIcons;
     public List<IconSlot> rightIcons;
-    public GameObject clearPanel;
+    // public GameObject clearPanel; // clearPanel 제거
     public GameObject linePrefab;
     public Canvas canvas;
 
@@ -30,7 +30,6 @@ public class LineConnectPuzzle : MiniGameBase
 
     void Start()
     {
-        clearPanel.SetActive(false);
         StartCoroutine(ShowPattern());
     }
 
@@ -162,9 +161,8 @@ public class LineConnectPuzzle : MiniGameBase
 
         if (success)
         {
-            clearPanel.SetActive(true);
             Debug.Log("연결 퍼즐 클리어!");
-            NotifyClear();
+            NotifyClear(); // MiniGameBase에 의해 MiniGameManager로 전달됨
         }
         else
         {
@@ -177,20 +175,6 @@ public class LineConnectPuzzle : MiniGameBase
     {
         yield return new WaitForSeconds(1f);
         ResetGame();
-    }
-
-    void ResetConnections()
-    {
-        foreach (GameObject line in drawnLines)
-        {
-            Destroy(line);
-        }
-        drawnLines.Clear();
-        connectionMap.Clear();
-        currentLine = null;
-        currentStartIndex = -1;
-
-        EnableDragging(true);
     }
 
     List<int> ShuffleList(List<int> list)
@@ -206,7 +190,6 @@ public class LineConnectPuzzle : MiniGameBase
     public override void ResetGame()
     {
         StopAllCoroutines();
-        clearPanel?.SetActive(false);
 
         foreach (GameObject line in drawnLines)
             Destroy(line);
@@ -216,6 +199,8 @@ public class LineConnectPuzzle : MiniGameBase
         currentStartIndex = -1;
 
         EnableDragging(true);
+
+        // 🟢 퍼즐 초기화 시작 (재시작 시에도 작동하게)
         StartCoroutine(ShowPattern());
     }
 }

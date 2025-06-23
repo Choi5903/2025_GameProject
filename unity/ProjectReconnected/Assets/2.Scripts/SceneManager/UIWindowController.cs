@@ -7,24 +7,28 @@ public class UIWindowController : MonoBehaviour
 {
     private RectTransform rectTransform;
 
+    [Header("초기 위치 설정 (패널마다 개별 지정)")]
+    public Vector2 initialAnchoredPosition = Vector2.zero;
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        if (initialAnchoredPosition == Vector2.zero)
+            initialAnchoredPosition = rectTransform.anchoredPosition;
     }
+
 
     void OnEnable()
     {
-        ResetToCenter();
-        // ✅ 창을 가장 앞으로 가져오기
+        ResetToInitialPosition();
         transform.SetAsLastSibling();
     }
 
-    public void ResetToCenter()
+    public void ResetToInitialPosition()
     {
-        rectTransform.anchoredPosition = Vector2.zero;
+        rectTransform.anchoredPosition = initialAnchoredPosition;
     }
 
-    // ✅ 버튼에서 이 메서드를 호출하여 창 상태 전환
     public void ToggleWindow()
     {
         SFXManager.Instance.PlayButtonClick1();
@@ -34,7 +38,6 @@ public class UIWindowController : MonoBehaviour
 
         gameObject.SetActive(willBeActive);
 
-        // ✅ 상태 전환 후 효과음 재생
         if (willBeActive)
         {
             SFXManager.Instance.PlayWindowOpen();

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e929a8e196d11444d8c781f68f06b094, type: 3}
+  m_Name: BoxDialogue01_006
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - speakerName: NPC1
+    sentence: "@$\u314E\u314F\uCCA0 \uB193\u314A\u3163&\u3139 \uBED4."
+    backgroundImage: {fileID: 0}
+  - speakerName: System
+    sentence: "<\uC774\uAC74 \uB610 \uBB50\uC57C.>"
+    backgroundImage: {fileID: 0}
+  - speakerName: System
+    sentence: "<'\uD604\uC7AC' \uC2DC\uC810\uC758 \uAE30\uC5B5\uC740 \uC0C1\uD0DC\uAC00
+      \uC2EC\uAC01\uD558\uB124\uC694.>"
+    backgroundImage: {fileID: 0}
+  - speakerName: System
+    sentence: "<\uC58D!>"
+    backgroundImage: {fileID: 0}
+  - speakerName: NPC1
+    sentence: "\uC9C0\uD558\uCCA0 \uB193\uCE60 \uBED4 \u314E\u314E."
+    backgroundImage: {fileID: 0}
+  - speakerName: System
+    sentence: "<\uC774\uB7F0 \uAC83\uB3C4 \uBCF5\uC6D0\uC728\uC5D0 \uD3EC\uD568\uC740
+      \uB3FC\uC694.>"
+    backgroundImage: {fileID: 0}
+  - speakerName: System
+    sentence: "<\uADF8\uB098\uC800\uB098 \uC5EC\uAE34 \uC704\uC5D0\uC11C \uBB50\uAC00
+      \uB5A8\uC5B4\uC9C0\uB294\uAC70 \uAC19\uC740\uB370>"
+    backgroundImage: {fileID: 0}
+  - speakerName: System
+    sentence: "<\uB2FF\uC73C\uBA74 \uD070\uC77C \uB098\uB2C8\uAE4C \uC798 \uD53C\uD574\uC11C
+      \uAC00\uC138\uC694.>"
+    backgroundImage: {fileID: 0}

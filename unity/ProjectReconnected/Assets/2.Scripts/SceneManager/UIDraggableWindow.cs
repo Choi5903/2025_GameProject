@@ -5,9 +5,11 @@ using UnityEngine.EventSystems;
 
 public class UIDraggableWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
-    public RectTransform dragHandle;  // 창 상단바
+    public RectTransform dragHandle;  // 창 상단바 (드래그 가능한 영역)
     private RectTransform windowRect;
     private Vector2 pointerOffset;
+
+    private bool isDragging = false;
 
     void Awake()
     {
@@ -16,14 +18,25 @@ public class UIDraggableWindow : MonoBehaviour, IPointerDownHandler, IDragHandle
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            windowRect, eventData.position, eventData.pressEventCamera, out pointerOffset);
-        // ✅ 창을 가장 앞으로 가져오기
-        windowRect.SetAsLastSibling();
+        // ✅ 드래그 핸들에서만 반응하도록 조건 추가
+        if (RectTransformUtility.RectangleContainsScreenPoint(dragHandle, eventData.position, eventData.pressEventCamera))
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                windowRect, eventData.position, eventData.pressEventCamera, out pointerOffset);
+
+            isDragging = true;
+            windowRect.SetAsLastSibling();
+        }
+        else
+        {
+            isDragging = false;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!isDragging) return;
+
         Vector2 localPointerPos;
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
             windowRect.parent as RectTransform, eventData.position, eventData.pressEventCamera, out localPointerPos))

@@ -22,6 +22,10 @@ public class MiniGameManager : MonoBehaviour
 
         //clearPanel.SetActive(false);
     }
+    public void OnMiniGameClear(MiniGameBase miniGame)
+    {
+        StartCoroutine(CloseMiniGameAfterDelay(miniGame));
+    }
 
     public void StartMiniGame(int index)
     {
@@ -45,21 +49,18 @@ public class MiniGameManager : MonoBehaviour
             Debug.Log($"미니게임 {index + 1} 시작!");
         }
     }
-
-    public void OnMiniGameClear(MiniGameBase miniGame)
-    {
-        StartCoroutine(CloseMiniGameAfterDelay(miniGame));
-    }
-
     private IEnumerator CloseMiniGameAfterDelay(MiniGameBase miniGame)
     {
-        //clearPanel.SetActive(true);
-
         yield return new WaitForSeconds(2f);
 
-        //clearPanel.SetActive(false);
         currentActiveGame?.SetActive(false);
         GameManager.Instance.SetMiniGamePlaying(false);
+
+        if (miniGame == null)
+        {
+            Debug.LogWarning("❌ miniGame is null. 클리어 처리 실패.");
+            yield break;
+        }
 
         if (miniGame.autoTriggerTarget != null)
         {
@@ -69,6 +70,14 @@ public class MiniGameManager : MonoBehaviour
                 interactable.Interact();
                 Debug.Log($"🟢 클리어 후 자동 상호작용 실행: {miniGame.autoTriggerTarget.name}");
             }
+            else
+            {
+                Debug.LogWarning($"⚠️ autoTriggerTarget에 IInteractable이 없음: {miniGame.autoTriggerTarget.name}");
+            }
+        }
+        else
+        {
+            Debug.Log("ℹ️ 클리어 후 실행할 오브젝트 없음.");
         }
     }
 }

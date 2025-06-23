@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18976bb9f5c3114bb5a5afb3e13a132, type: 3}
+  m_Name: NewMessengerDialogueData0002
+  m_EditorClassIdentifier: 
+  chatLines:
+  - message: "@\uC900\uD601, \uC900\uD601 \uC528?"
+    position: 1
+    sizeLevel: 2
+  - message: "\uBCF5\uC6D0 \uB9E1\uAE30\uC2E0 \uBD84 \uB9DE\uB098\uC694?"
+    position: 1
+    sizeLevel: 3
+  - message: "\uC758\uB8B0\uB97C \uB9E1\uACBC\uB358\uAC70 \uAC19\uAE34\uD55C\uB370"
+    position: 0
+    sizeLevel: 3
+  - message: "\uB204\uAD6C\uC2DC\uC8E0?"
+    position: 0
+    sizeLevel: 2
+  - message: "\uC911\uACC4\uC778 \uD1B5\uD574\uC11C"
+    position: 1
+    sizeLevel: 2
+  - message: "\uC774\uBC88\uC5D0 \uBCF5\uC6D0 \uC791\uC5C5\uD55C"
+    position: 1
+    sizeLevel: 2
+  - message: "\uC0AC\uB78C\uC785\uB2C8\uB2E4."
+    position: 1
+    sizeLevel: 2
+  - message: "\uC791\uC5C5 \uB05D\uB0AC\uC5B4\uC694."
+    position: 1
+    sizeLevel: 2
+  - message: "\uC544"
+    position: 0
+    sizeLevel: 1
+  - message: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4."
+    position: 0
+    sizeLevel: 2
+  - message: "\uC78A\uACE0 \uC788\uC5C8\uB124\uC694."
+    position: 0
+    sizeLevel: 2
+  - message: "\uADF8\uB7FC \uB370\uC774\uD130 \uBCF4\uB0B4\uC8FC\uC2DC\uBA74"
+    position: 0
+    sizeLevel: 3
+  - message: "\uC5C5\uB85C\uB4DC\uD558\uBA74 \uB418\uB294\uAC70\uC8E0?"
+    position: 0
+    sizeLevel: 3
+  - message: "\uBB3C\uB860 \uADF8\uAC83\uB3C4 \uC911\uC694\uD55C\uB370.."
+    position: 1
+    sizeLevel: 3
+  - message: "\uC6D0\uC778\uC744 \uCC3E\uC558\uC5B4\uC694."
+    position: 1
+    sizeLevel: 2
+  - message: "\uC77C\uC2DC\uC801\uC778 \uD604\uC0C1\uC774 \uC544\uB2C8\uB77C"
+    position: 1
+    sizeLevel: 3
+  - message: "\uC9C0\uAE08 \uC900\uD601 \uC528"
+    position: 1
+    sizeLevel: 2
+  - message: "\uBA38\uB9AC \uC18D\uC758 \uCE69 \uC790\uCCB4\uC5D0"
+    position: 1
+    sizeLevel: 2
+  - message: "\uC0DD\uAE34 \uBB38\uC81C\uAC00 \uC6D0\uC778\uC774\uC5D0\uC694."
+    position: 1
+    sizeLevel: 3
+  - message: "\uB124?"
+    position: 0
+    sizeLevel: 1
+  - message: "\uC81C \uCE69\uC740 \uBA40\uCA61\uD55C\uB370"
+    position: 0
+    sizeLevel: 2

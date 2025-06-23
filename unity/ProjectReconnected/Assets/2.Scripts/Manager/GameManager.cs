@@ -18,9 +18,10 @@ public class GameManager : MonoBehaviour
     public GameData gameData = new GameData();
 
     [Header("초기 복원율")]
+    public float initialRestorationRate = 40f;
     [Header("초기 복원율 설정")]
     public bool useInitialRestorationRate = true;  // ✅ 토글 추가
-    public float initialRestorationRate = 40f;
+    
 
     [Header("시간 상태")]
     public TimeState currentTimeState = TimeState.Present;

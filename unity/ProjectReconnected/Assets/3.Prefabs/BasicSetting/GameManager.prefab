@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4763257797694908468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8320444926174955412}
+  - component: {fileID: 3763400947482976451}
+  - component: {fileID: 6672629451680693634}
+  - component: {fileID: 9162929770263814730}
+  - component: {fileID: 4174510043091352790}
+  - component: {fileID: 8142043712340515513}
+  - component: {fileID: 8959334162102338979}
+  - component: {fileID: 3355545729721945065}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8320444926174955412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763257797694908468}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3763400947482976451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763257797694908468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24004c405e71ec049aa460c87dbb3df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+    restorationRate: 8
+    memoryClues: 0
+    currentTimeState: 1
+  useInitialRestorationRate: 0
+  initialRestorationRate: 14
+  currentTimeState: 1
+  availableTimeStates: 0000000001000000
+  restorationPenaltyOnTimeShift: 1
+  canShiftTime: 0
+  restorationThreshold: 1
+  sceneTimeMappings:
+  - sceneName: Stage1-1
+    startTimeState: 1
+  isMiniGamePlaying: 0
+  glitchEffectEvent: {fileID: 0}
+--- !u!114 &6672629451680693634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763257797694908468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dff09bfe5bb0df458aea53d723577d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9162929770263814730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763257797694908468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9694bbf1b519b4ab9292383c8008c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4174510043091352790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763257797694908468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00dc201b1a2d643ab58536f81219f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8142043712340515513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763257797694908468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661c49979883a564596834149a944a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beginEventObjects: []
+  buttonEventPairs: []
+  eventCompleteMappings: []
+  buttonScenePairs: []
+--- !u!114 &8959334162102338979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763257797694908468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b796fd5be6a41de4199f7d0bc2543612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restorationText: {fileID: 0}
+  restorationCircleFill: {fileID: 0}
+  clueText: {fileID: 0}
+--- !u!114 &3355545729721945065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763257797694908468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4292274f9d6734db865d13d2275f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  speakerNameText: {fileID: 0}
+  dialogueText: {fileID: 0}
+  leftCharacterImage: {fileID: 0}
+  rightCharacterImage: {fileID: 0}
+  extraImage: {fileID: 0}
